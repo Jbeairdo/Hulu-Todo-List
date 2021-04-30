@@ -1,0 +1,45 @@
+{
+  "name": "react-app-template",
+  "version": "1.0.0",
+  "description": "template for React application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "build": "webpack -p --watch",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jbeairdo/React-App-Template.git"
+  },
+  "author": "Jordan Beaird",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jbeairdo/React-App-Template/issues"
+  },
+  "homepage": "https://github.com/Jbeairdo/React-App-Template#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.15.0",
+    "modal": "^1.2.0",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.7",
+    "morgan": "^1.10.0",
+    "mysql": "^2.16.0",
+    "nodemon": "^2.0.7",
+    "react": "^15.7.0",
+    "react-dom": "^15.4.2",
+    "react-elastic-carousel": "^0.11.4",
+    "react-modal": "^3.12.1",
+    "react-whirligig": "^6.6.15"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.23.0",
+    "webpack": "^2.2.1",
+    "webpack-cli": "^4.6.0"
+  }
+}
