@@ -9,27 +9,25 @@ db.once('open', function() {
 });
 
 const taskSchema = mongoose.Schema({
-  task_id: {
-    type: Number,
-    index: true,
-    required:true
-  },
   name: String,
   title: String,
   description: String,
   due_date: String,
   month: String,
-  completed: Boolean
+  completed: Boolean,
+  type: String
 });
 
+const qcSchema = mongoose.Schema({
+  name: String,
+  facebook: Number,
+  twitter: Number
+})
+
 const Tasks = mongoose.model('Tasks', taskSchema);
+const QC = mongoose.model('QC', qcSchema);
 
-// Tasks.create({
-//   name: "Create list",
-//   description: "Create a list of things I need to do",
-//   due_date: "05-15-2021",
-//   month: "May",
-//   completed: false,
-// })
-
-module.exports = db;
+module.exports = {
+  Tasks,
+  QC
+};

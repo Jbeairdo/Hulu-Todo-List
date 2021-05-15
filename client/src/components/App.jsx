@@ -26,12 +26,10 @@ class App extends React.Component {
           </div>
           <div className="bi_weekly-container">
             <Bi_Weekly />
+            <Quality_Checks />
           </div>
           <div className="misc-container">
             <Misc />
-          </div>
-          <div className="quality_checks-container">
-            <Quality_Checks />
           </div>
         </div>
       </div>

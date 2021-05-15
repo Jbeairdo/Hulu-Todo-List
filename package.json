@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "css-loader": "^5.2.4",
     "express": "^4.15.0",
     "modal": "^1.2.0",
     "mongodb": "^3.6.6",
@@ -28,11 +29,12 @@
     "morgan": "^1.10.0",
     "mysql": "^2.16.0",
     "nodemon": "^2.0.7",
-    "react": "^15.7.0",
-    "react-dom": "^15.4.2",
+    "react": "^16.8",
+    "react-dom": "^16.8",
     "react-elastic-carousel": "^0.11.4",
     "react-modal": "^3.12.1",
-    "react-whirligig": "^6.6.15"
+    "react-whirligig": "^6.6.15",
+    "style-loader": "^2.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -40,8 +42,9 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.23.0",
     "file-loader": "^6.2.0",
+    "ttf-loader": "^1.0.2",
     "url-loader": "^4.1.1",
     "webpack": "^2.2.1",
-    "webpack-cli": "^4.6.0"
+    "webpack-cli": "^4.7.0"
   }
 }
