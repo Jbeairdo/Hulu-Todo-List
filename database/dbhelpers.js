@@ -14,7 +14,13 @@ const helpers = {
 
   //// POST ////
   postMiscTask: (req, callback) => {
-
+    const {title, description, due_date} = req.body;
+    Tasks.create({
+      title: title,
+      description: description,
+      due_date: due_date
+    })
+    .then((results) => callback(null, results))
   },
   postQualityCheck: (req, callback) => {
     QC.create({

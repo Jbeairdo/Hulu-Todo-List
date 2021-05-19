@@ -2,10 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 
+// Styles for Modal
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+
 const Bi_Weekly = (props) => {
 
   const [clicked, setClicked] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const clickedClass = clicked === false ? "cardContainer" : "cardContainerDone";
 
@@ -14,7 +26,7 @@ const Bi_Weekly = (props) => {
   }
 
   const toggleModal = () => {
-    setModalOpen(!modalOpen)
+    setIsOpen(!isOpen)
   }
 
   const addQC = () => {
@@ -33,6 +45,16 @@ const Bi_Weekly = (props) => {
       <div className="qc-header">Quality Checks
         <i class="fas fa-plus-circle qc-plus" onClick={toggleModal}></i>
       </div>
+      {isOpen ?
+        <div>
+          <Modal isOpen={isOpen} onRequestClose={toggleModal} ariaHideApp={false} style={customStyles}>
+            <form></form>
+            <div>Add New Quality Check</div>
+            <input type="text" placeholder="Name" className="modal-input"></input>
+          </Modal>
+        </div>
+        : null
+      }
     </div>
   )
 }

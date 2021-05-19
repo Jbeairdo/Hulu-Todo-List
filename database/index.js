@@ -9,13 +9,9 @@ db.once('open', function() {
 });
 
 const taskSchema = mongoose.Schema({
-  name: String,
   title: String,
   description: String,
   due_date: String,
-  month: String,
-  completed: Boolean,
-  type: String
 });
 
 const qcSchema = mongoose.Schema({

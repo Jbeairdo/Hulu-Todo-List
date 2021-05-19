@@ -22,7 +22,13 @@ const controller = {
   },
   //// POST ////
   postMiscTask: (req, res) => {
-
+    helpers.postMiscTask(req, (err, data) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(data)
+      }
+    })
   },
   postQualityCheck: (req, res) => {
     helpers.postQualityCheck(req, (err, data) => {
