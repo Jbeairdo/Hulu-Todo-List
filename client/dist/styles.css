@@ -67,6 +67,8 @@ table {
 #app {
   background: rgb(255,254,254);
   background: linear-gradient(180deg, rgba(255,254,254,1) 13%, #b1fad6 100%);
+  /* background: rgb(255,254,254);
+  background: linear-gradient(145deg, rgba(255,254,254,1) 0%, rgba(4,4,5,1) 100%); */
   width: 100vw;
   height: 100vh;
 }
@@ -128,7 +130,7 @@ table {
 .bi_weekly-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr 4fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   margin-top: 10%;
@@ -176,7 +178,8 @@ table {
 }
 
 .qc-header {
-  margin-top: 3vh;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
 }
 
 .cardContainer {
@@ -193,8 +196,22 @@ table {
   font-family: "GoldmanBold";
 }
 
+.cardContainerMonthly {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 25vw;
+  height: 15vh;
+  border-radius: 10px;
+  margin-left: 2.5vw;
+  margin-top: 7vh;
+  background: #1ce783;
+  box-shadow: 3px 3px 3px #cac8c8;
+  font-family: "GoldmanBold";
+}
+
 .qc-cards {
-  overflow: scroll;
+  overflow: auto;
   max-height: 37vh;
 }
 
@@ -211,8 +228,23 @@ table {
   box-shadow: 3px 3px 3px #cac8c8;
 }
 
+.cardContainerMonthlyDone {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 25vw;
+  height: 15vh;
+  border-radius: 10px;
+  margin-left: 2.5vw;
+  margin-top: 7vh;
+  background: grey;
+  box-shadow: 3px 3px 3px #cac8c8;
+}
+
 .cardContainer:hover,
-.cardContainerDone:hover {
+.cardContainerDone:hover,
+.cardContainerMonthlyDone:hover,
+.cardContainerMonthly {
   cursor: pointer;
 }
 

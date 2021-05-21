@@ -9,8 +9,8 @@ const Monthly = (props) => {
   const [clickedQC, setClickedQC] = useState(false);
 
   const clickedRecapClass = clickedRecap === false ? "cardContainer" : "cardContainerDone";
-  const clickedHudosClass = clickedHudos === false ? "cardContainer" : "cardContainerDone";
-  const clickedQCClass = clickedQC === false ? "cardContainer" : "cardContainerDone";
+  const clickedHudosClass = clickedHudos === false ? "cardContainerMonthly" : "cardContainerMonthlyDone";
+  const clickedQCClass = clickedQC === false ? "cardContainerMonthly" : "cardContainerMonthlyDone";
 
   const handleRecapClick = () => {
     setClickedRecap(!clickedRecap)

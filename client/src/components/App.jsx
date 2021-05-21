@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
 import Monthly from './Monthly.jsx';
 import Bi_Weekly from './Bi_Weekly.jsx';
 import Misc from './Misc.jsx';
 import Quality_Checks from './Quality_Checks.jsx';
+import { UserContext } from './UserContext.jsx';
 
 const App = () => {
-
-  // const [qualityChecks, setQualityChecks] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get('/api/quality_checks')
-  //     .then((results) => {
-  //       setQualityChecks(results.data)
-  //     })
-  //     console.log(qualityChecks)
-  // }, [qualityChecks.length])
 
   return (
     <div className="app-container">
