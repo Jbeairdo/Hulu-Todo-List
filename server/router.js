@@ -7,9 +7,17 @@ router
   .post(controller.postMiscTask)
 
 router
+  .route('/misc/:id')
+  .delete(controller.deleteTask)
+
+router
   .route('/quality_checks')
   .get(controller.getQualityChecks)
   .post(controller.postQualityCheck)
+
+router
+  .route('/quality_checks/:name')
+  .delete(controller.deleteQualityCheck)
 
 router
   .route('/facebook/:name')

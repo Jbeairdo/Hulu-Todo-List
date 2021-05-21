@@ -21,6 +21,7 @@ const Misc = (props) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
+  const [id, setId] = useState('');
 
   useEffect(() => {
     getTasks()
@@ -44,7 +45,21 @@ const Misc = (props) => {
       description: description,
       due_date: dueDate
     })
+    .then(() => {
+      getTasks();
+    })
     alert('New Task Created!')
+    setIsOpen(!isOpen)
+  }
+
+  const deleteTask = (id) => {
+    axios.delete(`/api/misc/${id}`)
+    .then(() => {
+      axios.get('/api/misc')
+      .then((results) => {
+        setTasks(results.data)
+      })
+    })
   }
 
   return (
@@ -68,10 +83,12 @@ const Misc = (props) => {
       }
       <div>
         {tasks.map((task, key) => (
-          <div className="cardContainer">
+          <div className="cardContainer-misc">
+            {/* {setId(task._id)} */}
             <div>Title: {task.title}</div>
             <div>Description: {task.description}</div>
             <div>Due Date: {task.due_date}</div>
+            <i class="far fa-times-circle" onClick={() => deleteTask(task._id)}></i>
           </div>
         ))}
       </div>

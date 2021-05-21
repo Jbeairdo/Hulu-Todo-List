@@ -5,27 +5,31 @@ const Quality_Checks = (props) => {
 
   const [qualityChecks, setQualityChecks] = useState([]);
 
-  const fbChecks = 0;
-  const twitterChecks = 0;
-
   useEffect(() => {
-    getQualityChecks();
-  }, [])
-
-  const getQualityChecks = () => {
     axios.get('/api/quality_checks')
       .then((results) => {
         setQualityChecks(results.data)
       })
+  }, [qualityChecks.length])
+
+  const deleteQualityCheck = (name) => {
+    axios.delete(`/api/quality_checks/${name}`)
+    .then(() => {
+      axios.get('/api/quality_checks')
+      .then((results) => {
+        setQualityChecks(results.data)
+      })
+    })
+    alert("Quality Check Deleted!")
   }
 
   return (
-    <div>
+    <div className="qc-cards">
       {qualityChecks.length > 0 ?
         <div>
         {qualityChecks.map((qc, key) => (
           <div className="cardContainer-quality-check">
-            <i class="far fa-times-circle"></i>
+            <i class="far fa-times-circle" onClick={() => deleteQualityCheck(qc.name)}></i>
             <div className="qc-name">{qc.name}</div>
             <div className="facebook">Facebook</div>
             <i class="fas fa-minus fa-minus-fb"></i>

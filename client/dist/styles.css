@@ -193,6 +193,11 @@ table {
   font-family: "GoldmanBold";
 }
 
+.qc-cards {
+  overflow: scroll;
+  max-height: 37vh;
+}
+
 .cardContainerDone {
   display: grid;
   justify-content: center;
@@ -235,6 +240,20 @@ table {
   border-radius: 10px;
   margin-left: 2.5vw;
   margin-bottom: 2.5vh;
+  background: #1ce783;
+  box-shadow: 3px 3px 3px #cac8c8;
+}
+
+.cardContainer-misc {
+  position: relative;
+  display: grid;
+  align-content: center;
+  width: 25vw;
+  height: 15vh;
+  border-radius: 10px;
+  margin-left: 2.5vw;
+  margin-bottom: 2.5vh;
+  margin-top: 4vh;
   background: #1ce783;
   box-shadow: 3px 3px 3px #cac8c8;
 }

@@ -47,6 +47,16 @@ const helpers = {
     )
     .then((results) => callback(null, results))
   },
+
+  //// DELETE ////
+  deleteQualityCheck: (req, callback) => {
+    QC.findOneAndDelete({name: req.params.name})
+    .then((results) => callback(null, results))
+  },
+  deleteTask: (req, callback) => {
+    Tasks.findOneAndDelete({_id: req.params.id})
+    .then((results) => callback(null, results))
+  },
 }
 
 module.exports = helpers;

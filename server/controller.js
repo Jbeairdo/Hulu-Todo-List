@@ -59,6 +59,26 @@ const controller = {
       }
     })
   },
+
+  //// DELETE ////
+  deleteQualityCheck: (req, res) => {
+    helpers.deleteQualityCheck(req, (err, data) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(data)
+      }
+    })
+  },
+  deleteTask: (req, res) => {
+    helpers.deleteTask(req, (err, data) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(data)
+      }
+    })
+  },
 }
 
 module.exports = controller;

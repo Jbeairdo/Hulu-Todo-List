@@ -16,10 +16,22 @@ const customStyles = {
 
 const Bi_Weekly = (props) => {
 
+  const [qualityChecks, setQualityChecks] = useState([]);
   const [clicked, setClicked] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [name, setName] = useState('');
   const clickedClass = clicked === false ? "cardContainer" : "cardContainerDone";
+
+  const getQualityChecks = () => {
+    axios.get('/api/quality_checks')
+      .then((results) => {
+        setQualityChecks(results.data)
+      })
+  }
+
+  useEffect(() => {
+    getQualityChecks();
+  }, [])
 
   const handleClick = () => {
     setClicked(!clicked)
@@ -29,10 +41,13 @@ const Bi_Weekly = (props) => {
     setIsOpen(!isOpen)
   }
 
-  const addQC = () => {
-    axios.post({
-      // name:
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('/api/quality_checks', {
+      name: name
     })
+    alert('New Quality Check Created!')
+    setIsOpen(!isOpen)
   }
 
   return (
@@ -48,9 +63,11 @@ const Bi_Weekly = (props) => {
       {isOpen ?
         <div>
           <Modal isOpen={isOpen} onRequestClose={toggleModal} ariaHideApp={false} style={customStyles}>
-            <form></form>
-            <div>Add New Quality Check</div>
-            <input type="text" placeholder="Name" className="modal-input"></input>
+            <form onSubmit={handleSubmit}>
+              <div>Add New Quality Check</div>
+              <input type="text" placeholder="Name" className="modal-input" onChange={(e) => setName(e.target.value)}></input>
+              <input type="submit"></input>
+            </form>
           </Modal>
         </div>
         : null
