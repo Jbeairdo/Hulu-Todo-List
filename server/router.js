@@ -27,4 +27,12 @@ router
   .route('/twitter/:name')
   .put(controller.incrementTwitter)
 
+  router
+  .route('/facebook_minus/:name')
+  .put(controller.decrementFB)
+
+router
+  .route('/twitter_minus/:name')
+  .put(controller.decrementTwitter)
+
 module.exports = router;

@@ -59,6 +59,24 @@ const controller = {
       }
     })
   },
+  decrementFB: (req, res) => {
+    helpers.decrementFB(req, (err, data) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(data)
+      }
+    })
+  },
+  decrementTwitter: (req, res) => {
+    helpers.decrementTwitter(req, (err, data) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(data)
+      }
+    })
+  },
 
   //// DELETE ////
   deleteQualityCheck: (req, res) => {

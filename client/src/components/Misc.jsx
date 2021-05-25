@@ -85,9 +85,9 @@ const Misc = (props) => {
         {tasks.map((task, key) => (
           <div className="cardContainer-misc">
             {/* {setId(task._id)} */}
-            <div>Title: {task.title}</div>
-            <div>Description: {task.description}</div>
-            <div>Due Date: {task.due_date}</div>
+            <div className="task-title">{task.title}</div>
+            <div className="task-descripton">Description: {task.description}</div>
+            <div className="task-dueDate">Due Date: {task.due_date}</div>
             <i class="far fa-times-circle" onClick={() => deleteTask(task._id)}></i>
           </div>
         ))}

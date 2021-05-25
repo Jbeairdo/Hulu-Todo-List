@@ -42,6 +42,34 @@ const Quality_Checks = (props) => {
     })
   }
 
+  const incrementFacebook = (name) => {
+    axios.put(`/api/facebook/${name}`)
+    .then(() => {
+      getQualityChecks();
+    })
+  }
+
+  const incrementTwitter = (name) => {
+    axios.put(`/api/twitter/${name}`)
+    .then(() => {
+      getQualityChecks();
+    })
+  }
+
+  const decrementFacebook = (name) => {
+    axios.put(`/api/facebook_minus/${name}`)
+    .then(() => {
+      getQualityChecks();
+    })
+  }
+
+  const decrementTwitter = (name) => {
+    axios.put(`/api/twitter_minus/${name}`)
+    .then(() => {
+      getQualityChecks();
+    })
+  }
+
   const toggleModal = () => {
     setIsOpen(!isOpen)
   }
@@ -52,10 +80,7 @@ const Quality_Checks = (props) => {
       name: name
     })
     .then(() => {
-      axios.get('/api/quality_checks')
-      .then((results) => {
-        setQualityChecks(results.data)
-      })
+      getQualityChecks();
     })
     toggleModal();
   }
@@ -85,13 +110,13 @@ const Quality_Checks = (props) => {
               <i class="far fa-times-circle" onClick={() => deleteQualityCheck(qc.name)}></i>
               <div className="qc-name">{qc.name}</div>
               <div className="facebook">Facebook</div>
-              <i class="fas fa-minus fa-minus-fb"></i>
+              <i class="fas fa-minus fa-minus-fb" onClick={() => decrementFacebook(qc.name)}></i>
               <div className="fb-checks">{qc.facebook}</div>
-              <i class="fas fa-plus fa-plus-twitter"></i>
+              <i class="fas fa-plus fa-plus-twitter" onClick={() => incrementTwitter(qc.name)}></i>
               <div className="twitter">Twitter</div>
-              <i class="fas fa-minus fa-minus-twitter"></i>
+              <i class="fas fa-minus fa-minus-twitter" onClick={() => decrementTwitter(qc.name)}></i>
               <div className="twitter-checks">{qc.twitter}</div>
-              <i class="fas fa-plus fa-plus-fb"></i>
+              <i class="fas fa-plus fa-plus-fb" onClick={() => incrementFacebook(qc.name)}></i>
             </div>
           ))}
           </div>

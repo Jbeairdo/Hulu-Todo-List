@@ -33,7 +33,6 @@ const helpers = {
 
   //// PUT ////
   incrementFB: (req, callback) => {
-    console.log(req.params)
     QC.findOneAndUpdate(
       {name: req.params.name},
       {$inc: {facebook: 1}}
@@ -44,6 +43,20 @@ const helpers = {
     QC.findOneAndUpdate(
       {name: req.params.name},
       {$inc: {twitter: 1}}
+    )
+    .then((results) => callback(null, results))
+  },
+  decrementFB: (req, callback) => {
+    QC.findOneAndUpdate(
+      {name: req.params.name},
+      {$inc: {facebook: -1}}
+    )
+    .then((results) => callback(null, results))
+  },
+  decrementTwitter: (req, callback) => {
+    QC.findOneAndUpdate(
+      {name: req.params.name},
+      {$inc: {twitter: -1}}
     )
     .then((results) => callback(null, results))
   },
