@@ -65,8 +65,8 @@ table {
 }
 
 #app {
-  background: rgb(255,254,254);
-  background: linear-gradient(180deg, rgba(255,254,254,1) 13%, #b1fad6 100%);
+  /* background: rgb(255,254,254);
+  background: linear-gradient(180deg, rgba(255,254,254,1) 13%, #b1fad6 100%); */
   /* background: rgb(255,254,254);
   background: linear-gradient(145deg, rgba(255,254,254,1) 0%, rgba(4,4,5,1) 100%); */
   width: 100vw;
@@ -215,6 +215,11 @@ table {
   max-height: 37vh;
 }
 
+.misc-cards {
+  overflow: auto;
+  max-height: 66vh;
+}
+
 .cardContainerDone {
   display: grid;
   justify-content: center;
@@ -259,7 +264,7 @@ table {
   margin-top: 4vh;
   background: #1ce783;
   box-shadow: 3px 3px 3px #cac8c8;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .cardContainer-quality-check {
@@ -286,6 +291,7 @@ table {
   margin-left: 2.5vw;
   margin-bottom: 2.5vh;
   margin-top: 4vh;
+  margin-bottom: 7vh;
   background: #1ce783;
   box-shadow: 3px 3px 3px #cac8c8;
 }
@@ -389,14 +395,68 @@ table {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
-.task-title {
+.task-title,
+.task-description {
+  text-align: center;
+}
 
+.task-title:hover,
+.task-description:hover {
+  text-align: center;
+  cursor: pointer;
+  color: grey;
+}
+
+.task-title {
+  font-size: 4vh;
+  margin-top: 1.5vh;
 }
 
 .task-description {
-
+  margin-top: 1vh;
+  /* overflow: auto; */
 }
 
-.task-dueDate {
+.delete-task,
+.fa-edit {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
 
+.fa-edit {
+  position: absolute;
+  right: .5vw;
+}
+
+.fa-edit:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+/* .delete-qc {
+  margin-top: 1.5vh;
+} */
+
+.task-modal {
+  height: 50vh;
+  color: green;
+}
+
+.task-modal-header {
+  text-align: center;
+  font-size: 3vh;
+}
+
+.modal-input,
+.submit {
+  border-radius: 7px;
+  border: 1px solid black;
+}
+
+.modal-input {
+  margin-top: 1vh;
+}
+
+.checkmark {
+  margin-top: 1vh;
 }

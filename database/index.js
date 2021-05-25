@@ -11,7 +11,6 @@ db.once('open', function() {
 const taskSchema = mongoose.Schema({
   title: String,
   description: String,
-  due_date: String,
 });
 
 const qcSchema = mongoose.Schema({

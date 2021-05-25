@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TaskCard from './TaskCard.jsx';
+import { Checkmark } from 'react-checkmark';
 
 const Monthly = (props) => {
 
@@ -28,15 +29,33 @@ const Monthly = (props) => {
     <div>
       <div className="monthly-header">Monthly
       </div>
-      <div className={clickedRecapClass} onClick={handleRecapClick}>
-        <div className="recap">Recap Quiz</div>
-      </div>
-      <div className={clickedHudosClass} onClick={handleHudosClick}>
-        <div className="hudos-email">Hudos Email</div>
-      </div>
-      <div className={clickedQCClass} onClick={handleQCClick}>
-        <div className="qc-monthly">Quality Checks</div>
-      </div>
+      {clickedRecapClass === "cardContainerDone" ?
+        <div className={clickedRecapClass} onClick={handleRecapClick}>
+          <div className="recap">Recap Quiz</div>
+          <Checkmark className="checkMark"/>
+        </div>:
+        <div className={clickedRecapClass} onClick={handleRecapClick}>
+          <div className="recap">Recap Quiz</div>
+        </div>
+      }
+      {clickedHudosClass === "cardContainerMonthlyDone" ?
+        <div className={clickedHudosClass} onClick={handleHudosClick}>
+          <div className="hudos-email">Hudos Email</div>
+          <Checkmark />
+        </div>:
+        <div className={clickedHudosClass} onClick={handleHudosClick}>
+          <div className="hudos-email">Hudos Email</div>
+        </div>
+      }
+      {clickedQCClass === "cardContainerMonthlyDone" ?
+        <div className={clickedQCClass} onClick={handleQCClick}>
+          <div className="qc-monthly">Quality Checks</div>
+          <Checkmark />
+        </div>:
+        <div className={clickedQCClass} onClick={handleQCClick}>
+          <div className="qc-monthly">Quality Checks</div>
+        </div>
+      }
     </div>
   )
 }

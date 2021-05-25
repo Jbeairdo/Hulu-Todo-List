@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Checkmark } from 'react-checkmark';
 import axios from 'axios';
 import Modal from 'react-modal';
 
@@ -27,9 +28,15 @@ const Bi_Weekly = (props) => {
     <div>
       <div className="bi_weekly-header">Bi-Weekly
       </div>
+      {clicked ?
+      <div className={clickedClass} onClick={handleClick}>
+        <div className="article-review">KB Article Review Email</div>
+        <Checkmark className="checkMark"/>
+      </div>:
       <div className={clickedClass} onClick={handleClick}>
         <div className="article-review">KB Article Review Email</div>
       </div>
+      }
     </div>
   )
 }

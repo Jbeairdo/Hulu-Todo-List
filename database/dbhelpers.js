@@ -14,11 +14,10 @@ const helpers = {
 
   //// POST ////
   postMiscTask: (req, callback) => {
-    const {title, description, due_date} = req.body;
+    const {title, description} = req.body;
     Tasks.create({
       title: title,
-      description: description,
-      due_date: due_date
+      description: description
     })
     .then((results) => callback(null, results))
   },
@@ -57,6 +56,20 @@ const helpers = {
     QC.findOneAndUpdate(
       {name: req.params.name},
       {$inc: {twitter: -1}}
+    )
+    .then((results) => callback(null, results))
+  },
+  editTaskTitle: (req, callback) => {
+    Tasks.findOneAndUpdate(
+      {_id: req.params.id},
+      {$set: {title: req.body.title}}
+    )
+    .then((results) => callback(null, results))
+  },
+  editTaskDescription: (req, callback) => {
+    Tasks.findOneAndUpdate(
+      {_id: req.params.id},
+      {$set: {description: req.body.description}}
     )
     .then((results) => callback(null, results))
   },

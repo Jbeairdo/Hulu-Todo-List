@@ -18,9 +18,10 @@ const Misc = (props) => {
 
   const [tasks, setTasks] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenEditTitle, setIsOpenEditTitle] = useState(false);
+  const [isOpenEditDescription, setisOpenEditDescription] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
   const [id, setId] = useState('');
 
   useEffect(() => {
@@ -38,17 +39,23 @@ const Misc = (props) => {
     setIsOpen(!isOpen)
   }
 
+  const toggleEditTitle = () => {
+    setIsOpenEditTitle(!isOpenEditTitle)
+  }
+
+  const toggleEditDescription = () => {
+    setisOpenEditDescription(!isOpenEditDescription)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('/api/misc', {
       title: title,
-      description: description,
-      due_date: dueDate
+      description: description
     })
     .then(() => {
       getTasks();
     })
-    alert('New Task Created!')
     setIsOpen(!isOpen)
   }
 
@@ -62,33 +69,80 @@ const Misc = (props) => {
     })
   }
 
+  const editTaskTitle = () => {
+    axios.put(`api/misc/${id}/title`, {
+      title: title,
+    })
+  }
+
+  const editTaskDescription = () => {
+    axios.put(`api/misc/${id}/description`, {
+      description: description
+    })
+  }
+
   return (
     <div>
       <div className="misc-header">Misc.
-        <i class="fas fa-plus-circle" onClick={toggleModal}></i>
+        <i className="fas fa-plus-circle" onClick={toggleModal}></i>
       </div>
       {isOpen ?
         <div>
           <Modal isOpen={isOpen} onRequestClose={toggleModal} ariaHideApp={false} style={customStyles}>
             <form onSubmit={handleSubmit}>
-              <div>Create New Task</div>
+              <div className="task-modal-header">Create New Task</div>
               <input type="text" placeholder="Task Title" className="modal-input" onChange={(e) => setTitle(e.target.value)}></input>
               <input type="text" placeholder="Task Description" className="modal-input" onChange={(e) => setDescription(e.target.value)}></input>
-              <input type="text" placeholder="Task Due Date" className="modal-input" onChange={(e) => setDueDate(e.target.value)}></input>
               <input type="submit"></input>
             </form>
           </Modal>
         </div>
         : null
       }
-      <div>
+      {isOpenEditTitle ?
+        <div>
+          <Modal isOpen={isOpenEditTitle} onRequestClose={toggleEditTitle} ariaHideApp={false} style={customStyles}>
+          <form onSubmit={editTaskTitle}>
+              <div className="task-modal-header">Edit Title</div>
+              <input type="text" placeholder="Task Title" value={title} className="modal-input" onChange={(e) => setTitle(e.target.value)}></input>
+              <input type="submit"></input>
+            </form>
+          </Modal>
+        </div>
+        : null
+      }
+      {isOpenEditDescription ?
+        <div>
+          <Modal isOpen={isOpenEditDescription} onRequestClose={toggleEditDescription} ariaHideApp={false} style={customStyles}>
+          <form onSubmit={editTaskDescription}>
+              <div className="task-modal-header">Edit Description</div>
+              <div className="task-modal">
+                <input type="text" placeholder="Task Description" value={description} className="modal-input" onChange={(e) => setDescription(e.target.value)}></input>
+                <input type="submit" className="submit"></input>
+              </div>
+            </form>
+          </Modal>
+        </div>
+        : null
+      }
+      <div className="misc-cards">
         {tasks.map((task, key) => (
           <div className="cardContainer-misc">
-            {/* {setId(task._id)} */}
-            <div className="task-title">{task.title}</div>
-            <div className="task-descripton">Description: {task.description}</div>
-            <div className="task-dueDate">Due Date: {task.due_date}</div>
-            <i class="far fa-times-circle" onClick={() => deleteTask(task._id)}></i>
+            <div className="task-title"
+              onClick={ () => {
+                setId(task._id)
+                setTitle(task.title)
+                toggleEditTitle()
+              }}>{task.title}
+            </div>
+            <div className="task-description"
+              onClick={ () => {
+                setId(task._id)
+                setDescription(task.description)
+                toggleEditDescription()
+              }}>{task.description}
+            </div>
+            <i className="far fa-times-circle delete-task" onClick={() => deleteTask(task._id)}></i>
           </div>
         ))}
       </div>

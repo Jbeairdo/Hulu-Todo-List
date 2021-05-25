@@ -11,6 +11,14 @@ router
   .delete(controller.deleteTask)
 
 router
+  .route('/misc/:id/title')
+  .put(controller.editTaskTitle)
+
+router
+  .route('/misc/:id/description')
+  .put(controller.editTaskDescription)
+
+router
   .route('/quality_checks')
   .get(controller.getQualityChecks)
   .post(controller.postQualityCheck)

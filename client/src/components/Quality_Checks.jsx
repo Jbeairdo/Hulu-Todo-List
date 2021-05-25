@@ -94,7 +94,7 @@ const Quality_Checks = (props) => {
         <div>
           <Modal isOpen={isOpen} onRequestClose={toggleModal} ariaHideApp={false} style={customStyles}>
             <form onSubmit={handleSubmit}>
-              <div>Add New Quality Check</div>
+              <div className="task-modal-header">Add New Quality Check</div>
               <input type="text" placeholder="Name" className="modal-input" onChange={(e) => setName(e.target.value)}></input>
               <input type="submit"></input>
             </form>
@@ -107,7 +107,7 @@ const Quality_Checks = (props) => {
           <div>
           {qualityChecks.map((qc, key) => (
             <div className="cardContainer-quality-check">
-              <i class="far fa-times-circle" onClick={() => deleteQualityCheck(qc.name)}></i>
+              <i class="far fa-times-circle delete-qc" onClick={() => deleteQualityCheck(qc.name)}></i>
               <div className="qc-name">{qc.name}</div>
               <div className="facebook">Facebook</div>
               <i class="fas fa-minus fa-minus-fb" onClick={() => decrementFacebook(qc.name)}></i>
